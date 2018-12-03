@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scenes/level_design_josephine.unity
+  isLoaded: 1
+  isActive: 1

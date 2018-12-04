@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour {
         turnManager = GameObject.Find("GameRoundManager").GetComponent<TurnManager>(); 
         defaultMaterial = GetComponent<Renderer>().material;
         turnEnded = false;
-        cameraManager = GameObject.FindGameObjectWithTag("GameRoundManager").GetComponent<CameraManager>(); 
+        cameraManager = GameObject.Find("GameRoundManager").GetComponent<CameraManager>(); 
 
         graveyard = GameObject.Find("Graveyard").GetComponent<PlayerGraveyard>(); 
 
@@ -98,6 +98,7 @@ public class PlayerScript : MonoBehaviour {
         navAgent.ResetPath(); //stop movement when time is up 
         
         cameraManager.ChangeMovable(); //make the camera stop following the player
+        cameraManager.ResetCamera(); 
 
         GetComponent<Renderer>().material = defaultMaterial; //return to default material 
 

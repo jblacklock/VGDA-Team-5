@@ -89,7 +89,8 @@ public class TurnManager : MonoBehaviour {
             bool turnEnded = enemy.GetComponent<EnemyScript>().GetTurnEnded();
             if (!turnEnded)
             {
-                enemySelector.NextEnemy(enemy); 
+                enemySelector.NextEnemy(enemy);
+                return; 
             }
         }
 

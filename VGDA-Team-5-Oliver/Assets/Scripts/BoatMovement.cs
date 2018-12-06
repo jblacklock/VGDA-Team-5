@@ -11,10 +11,12 @@ public class BoatMovement : MonoBehaviour
     public float offSetZ;
     private NavMeshAgent navAgent;
     private NavMeshHit navHit;
+    private AudioSource audio; 
 
     // Use this for initialization
     void Start()
     {
+        audio = GetComponent<AudioSource>(); 
         navAgent = GetComponent<NavMeshAgent>();
         transform.position = Data.Instance().GetPositionInWorldMap(); 
     }
@@ -24,6 +26,8 @@ public class BoatMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) //if left mouse button is pressed 
         {
+            audio.Play(); 
+
             Ray ray = cam.ScreenPointToRay(Input.mousePosition); //get mouse position 
             RaycastHit hit;
 

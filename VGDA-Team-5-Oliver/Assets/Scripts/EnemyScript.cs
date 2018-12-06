@@ -23,10 +23,12 @@ public class EnemyScript : MonoBehaviour {
     private EnemyGraveyard graveyard;
     private bool alive;
     private bool checkCollision;
-    private StatsScript stats; 
+    private StatsScript stats;
+    private AudioSource audio; 
 
 
     void Start () {
+        audio = GameObject.Find("Sounds").GetComponents<AudioSource>()[1]; 
         currentHP = maxHP;
         turnEnded = false;
         alive = true;
@@ -65,7 +67,13 @@ public class EnemyScript : MonoBehaviour {
         cameraManager.StartCoroutine("FollowEnemy", gameObject); 
 
         navAgent.SetDestination(target); //set destination to mouse position 
+
+        audio.Play(); 
+
         yield return new WaitForSeconds(movementTime); //wait for how long this player can move 
+
+        audio.Stop(); 
+
         navAgent.ResetPath(); //stop movement when time is up 
 
         cameraManager.ChangeMovable(); //make the camera stop following the player

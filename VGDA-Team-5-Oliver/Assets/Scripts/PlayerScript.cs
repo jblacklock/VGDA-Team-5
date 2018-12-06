@@ -23,7 +23,9 @@ public class PlayerScript : MonoBehaviour {
     private PlayerGraveyard graveyard;
     private CameraManager cameraManager;
     private bool checkCollision;
-    private StatsScript stats; 
+    private StatsScript stats;
+    private AudioSource walkingAudio;
+    private AudioSource fightingAudio; 
 
     public int maxHP;
     public int currentHP;
@@ -33,6 +35,9 @@ public class PlayerScript : MonoBehaviour {
     public float collisionRadius = 0.5f; 
     
 	void Start () {
+        AudioSource[] sources = GameObject.Find("Sounds").GetComponents<AudioSource>(); 
+        walkingAudio = sources[1];
+        fightingAudio = sources[2]; 
         navAgent = GetComponent<NavMeshAgent>();
         speed = navAgent.speed; //set speed to default speed of nav agent 
         selected = false;
@@ -100,7 +105,11 @@ public class PlayerScript : MonoBehaviour {
 
         navAgent.SetDestination(target); //set destination to mouse position 
 
+        walkingAudio.Play(); 
+
         yield return new WaitForSeconds(movementTime); //wait for how long this player can move 
+
+        walkingAudio.Stop(); 
 
         navAgent.ResetPath(); //stop movement when time is up 
         
@@ -138,6 +147,9 @@ public class PlayerScript : MonoBehaviour {
 
             while(fighting)
             {
+
+                fightingAudio.Play(); 
+
                 if (defense < enemy.GetOffense())
                 {
                     currentHP = currentHP - enemy.GetDamage();

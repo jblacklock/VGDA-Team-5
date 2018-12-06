@@ -6,8 +6,11 @@ using UnityEngine.AI;
 public class BoatMovement : MonoBehaviour {
 
     public Camera cam;
+    public float offSetY;
+    public float offSetZ;
     private UnityEngine.AI.NavMeshAgent navAgent;
     private UnityEngine.AI.NavMeshHit navHit;
+
 
 	// Use this for initialization
 	void Start () {
@@ -28,5 +31,7 @@ public class BoatMovement : MonoBehaviour {
                 navAgent.SetDestination(hit.point); //set destination to mouse position 
             }
         }
+
+        cam.transform.position = new Vector3(transform.position.x, transform.position.y + offSetY, transform.position.z - offSetZ);
     }
 }

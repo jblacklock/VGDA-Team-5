@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStarter : MonoBehaviour {
 
     public DialogueTrigger[] dialogues;
+    public DialogueTrigger[] afterDialogues; 
 
     private int index;
     private TurnManager turnManager; 
@@ -24,7 +26,26 @@ public class GameStarter : MonoBehaviour {
             dialogues[index].TriggerDialogue(); 
         } else
         {
+            index = 0; 
             turnManager.StartCoroutine("PlayerTurn"); 
+        }
+    }
+
+    public DialogueTrigger[] GetAfterDialogues()
+    {
+        return afterDialogues; 
+    }
+
+    public void NextAfterDialogue()
+    {
+        index++;
+        if (index < afterDialogues.Length)
+        {
+            afterDialogues[index].TriggerAfterDialogue();
+        }
+        else
+        { 
+            SceneManager.LoadScene("WorldMap");
         }
     }
 }

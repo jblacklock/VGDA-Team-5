@@ -31,8 +31,9 @@ public class EnemyGraveyard : MonoBehaviour
     public void AddToGraveyard(GameObject enemy)
     {
         deadEnemies.Add(enemy);
+
         Destroy(enemy);
-        Debug.Log("enemy added to graveyard"); 
+
         if (deadEnemies.Count == maxDeadEnemies)
         {
             turnManager.SetGameOver();
@@ -51,8 +52,8 @@ public class EnemyGraveyard : MonoBehaviour
 
         yield return new WaitForSeconds(4);
              
-        Data.Instance().DeactivateLastPortal(); 
+        Data.Instance().DeactivateLastPortal();
 
-        SceneManager.LoadScene("WorldMap"); 
+        GameObject.Find("GameRoundManager").GetComponent<GameStarter>().GetAfterDialogues()[0].TriggerAfterDialogue();
     }
 }

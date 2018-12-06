@@ -133,8 +133,6 @@ public class PlayerScript : MonoBehaviour {
         Collider[] colliders = Physics.OverlapSphere(transform.position, collisionRadius, LayerMask.GetMask("Enemy"));
         if (colliders.Length > 0)
         {
-            Debug.Log("Collision with enemy detected");
-
             EnemyScript enemy = colliders[0].gameObject.GetComponent<EnemyScript>();
             bool fighting = true; 
 
@@ -142,87 +140,32 @@ public class PlayerScript : MonoBehaviour {
             {
                 if (defense < enemy.GetOffense())
                 {
-                    Debug.Log("enemy does damage");
                     currentHP = currentHP - enemy.GetDamage();
                 }
 
                 if (currentHP <= 0)
                 {
-                    Debug.Log("Player dies");
                     fighting = false; 
                     graveyard.AddToGraveyard(gameObject);
                 }
 
                 if (offense > enemy.GetDefense())
                 {
-                    Debug.Log("Player does damage");
                     enemy.SetCurrentHP(damage);
                 }
 
                 if (enemy.GetCurrentHP() <= 0)
                 {
-                    Debug.Log("Enemy dies");
                     fighting = false; 
                     enemy.Die();
                 }
             }
         }
-
-        //checkCollision = true; 
     }
 
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        Debug.Log(other); 
-        if(checkCollision)
-        {
-            navAgent.ResetPath();
-            selector.SetSelectable(false); 
-
-            if (other.gameObject.CompareTag("Enemy"))
-            {
-                Debug.Log("Player engages FIGHT!"); 
-                EnemyScript enemy = other.gameObject.GetComponent<EnemyScript>();
-            
-                if (defense < enemy.GetOffense())
-                {
-                    Debug.Log("Enemy does damage"); 
-                    currentHP = currentHP - enemy.GetDamage();
-                }    
-
-                if(currentHP <= 0)
-                {
-                    Debug.Log("Player dies");
-                    checkCollision = false; 
-                    graveyard.AddToGraveyard(gameObject); 
-                }
-
-
-                if (offense > enemy.GetDefense())
-                {
-                    Debug.Log("Player does damage"); 
-                    enemy.SetCurrentHP(damage); 
-                }
-
-                if(enemy.GetCurrentHP() <= 0)
-                {
-                    Debug.Log("Enemy dies");
-                    checkCollision = false;
-                    enemy.Die(); 
-                }
-
-            } else
-            {
-                checkCollision = false; 
-            }
-        
-        }
-    }*/
 
     private void OnMouseOver()
     {
-        //70, 80, 130, 230
         stats.DisplayStats(maxHP, currentHP, defense, offense, damage); 
         stats.GetComponent<Image>().color = new Color32(70, 80, 130, 230); 
     }

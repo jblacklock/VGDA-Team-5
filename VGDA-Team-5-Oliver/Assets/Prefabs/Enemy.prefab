@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4529285653471264}
   - component: {fileID: 212844741357266408}
   m_Layer: 9
-  m_Name: PlagueDoctor
+  m_Name: VikingGirl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,13 +83,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1810909456411512}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4912994350546812}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!4 &4912994350546812
 Transform:
   m_ObjectHideFlags: 1
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1496786343983452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.82, y: 0.25, z: 3.69}
+  m_LocalPosition: {x: -3.63, y: 0.25, z: 2.51}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4529285653471264}
@@ -175,9 +175,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 50
   currentHP: 0
-  defense: 15
-  offense: 30
-  damage: 5
+  defense: 10
+  offense: 15
+  damage: 10
   movementTime: 1
   collisionRadius: 0.5
 --- !u!135 &135096344277688102
@@ -294,7 +294,7 @@ SpriteRenderer:
   m_SortingLayerID: 2076772087
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1bb719386e148674b8ac8308094ccd41, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00560ba25977d4841bddbc7a8d6ffe8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

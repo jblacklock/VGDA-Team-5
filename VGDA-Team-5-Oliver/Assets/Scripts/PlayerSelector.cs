@@ -68,16 +68,16 @@ public class PlayerSelector : MonoBehaviour {
     public void SetMovementCircle(GameObject player, float movementArea)
     {
         movementCircle.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 0.25f, player.transform.position.z - 0.25f); 
-        movementCircle.transform.localScale = new Vector3(movementArea, movementArea, 1f);
-        rotator.Rotate(); 
+        movementCircle.transform.localScale = new Vector3(movementArea, movementArea, 1f); 
         movementCircle.SetActive(true);
+        rotator.Rotate();
     }
 
 
     public void DeactivateMovementCircle()
     {
-        movementCircle.SetActive(false);
         rotator.Rotate(); 
+        movementCircle.SetActive(false);
     } 
 
     public GameObject[] GetPlayers()

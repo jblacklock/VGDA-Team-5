@@ -26,8 +26,6 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         animator.SetBool("IsOpen", true);
 
-        Debug.Log("starting conversation with " + dialogue.name);
-
         nameText.text = dialogue.name;
         personImage.sprite = dialogue.person; 
 

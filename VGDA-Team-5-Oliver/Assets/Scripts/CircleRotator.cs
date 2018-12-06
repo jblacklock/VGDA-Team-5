@@ -12,7 +12,7 @@ public class CircleRotator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         circle = GetComponent<SpriteRenderer>();
-        rotate = false; 
+        rotate = true; 
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class CircleRotator : MonoBehaviour {
 	}
 
     public void Rotate()
-    {
-        rotate = !rotate; 
+    { 
+        rotate = !rotate;
     }
 }

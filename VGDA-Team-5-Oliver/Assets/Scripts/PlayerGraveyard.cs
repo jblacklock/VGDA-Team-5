@@ -30,12 +30,21 @@ public class PlayerGraveyard : MonoBehaviour {
     public void AddToGraveyard(GameObject player)
     {
         deadPlayers.Add(player);
-        Destroy(player);  
 
-        if(deadPlayers.Count == maxDeadPlayers)
+        if (SceneManager.GetActiveScene().name == "Level1_VikingVillage")
         {
+            GameObject.Find("GameRoundManager").GetComponent<GameStarter>().GetAfterDialogues()[0].TriggerAfterDialogue();
             turnManager.SetGameOver();
-            StartCoroutine("GameOver"); 
+            gameOverText.enabled = true;
+        } else
+        {
+            Destroy(player);  
+
+            if(deadPlayers.Count == maxDeadPlayers)
+            {
+                turnManager.SetGameOver();
+                StartCoroutine("GameOver"); 
+            }
         }
     }
 

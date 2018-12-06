@@ -82,95 +82,35 @@ public class EnemyScript : MonoBehaviour {
         Collider[] colliders = Physics.OverlapSphere(transform.position, collisionRadius, LayerMask.GetMask("Player")); 
         if (colliders.Length > 0)
         {
-            Debug.Log("Collision with player detected");
-
             PlayerScript player = colliders[0].gameObject.GetComponent<PlayerScript>();
             bool fighting = true; 
             while(fighting)
             {
                 if (defense < player.GetOffense())
                 {
-                    Debug.Log("player does damage");
                     currentHP = currentHP - player.GetDamage();
                 }
 
                 if (currentHP <= 0)
                 {
-                    Debug.Log("Enemy dies");
                     fighting = false; 
                     graveyard.AddToGraveyard(gameObject);
                 }
 
                 if (offense > player.GetDefense())
                 {
-                    Debug.Log("Enemy does damage");
                     player.SetCurrentHP(damage);
                 }
 
                 if (player.GetCurrentHP() <= 0)
                 {
-                    Debug.Log("Player dies");
                     fighting = false; 
                     player.Die();
                 }
             }
         }
-
-        //checkCollision = true; 
     }
-
-    /*
-    private void OnTriggerStay(Collider other)
-    {
-        if (checkCollision)
-        {
-            if (other.GetComponent<PlayerScript>() != null)
-            {
-                Debug.Log("Enemy engages FIGHT!"); 
-
-                PlayerScript player = other.GetComponent<PlayerScript>(); 
-
-                if (defense < player.GetOffense())
-                {
-                    Debug.Log("player does damage");
-                    currentHP = currentHP - player.GetDamage();
-                }
-
-                if (currentHP <= 0)
-                {
-                    Debug.Log("Enemy dies"); 
-                    checkCollision = false;
-                    graveyard.AddToGraveyard(gameObject);
-                    Debug.Log("ending turn"); 
-                    TurnEnded();
-                    turnManager.CheckEnemyTurns();
-                }
-
-
-                if (offense > player.GetDefense())
-                {
-                    Debug.Log("Enemy does damage");
-                    player.SetCurrentHP(damage);
-                }
-
-                if (player.GetCurrentHP() <= 0)
-                {
-                    Debug.Log("Player dies");
-                    checkCollision = false;
-                    player.Die();
-                    TurnEnded();
-                    turnManager.CheckEnemyTurns();
-                }
-
-            } else
-            {
-                checkCollision = false;
-                TurnEnded();
-                turnManager.CheckEnemyTurns();
-            }
-
-        }
-    }*/
+    
 
     private void OnMouseOver()
     {

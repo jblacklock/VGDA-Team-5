@@ -4661,7 +4661,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1604060119}
         m_MethodName: DisplayNextSentence
         m_Mode: 1
         m_Arguments:
@@ -6726,7 +6726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOffset: 2
-  enemyOffset: 6
+  enemyOffset: 2
   camera: {fileID: 1568313813}
 --- !u!114 &981886602
 MonoBehaviour:
@@ -12553,6 +12553,11 @@ Prefab:
       propertyPath: movementArea
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 114284907833273238, guid: d630d670ecc44f348bb5da645cf6e57a,
+        type: 2}
+      propertyPath: defense
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d630d670ecc44f348bb5da645cf6e57a, type: 2}
   m_IsPrefabAsset: 0
@@ -13708,6 +13713,11 @@ Prefab:
     - target: {fileID: 114284907833273238, guid: d630d670ecc44f348bb5da645cf6e57a,
         type: 2}
       propertyPath: offense
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114284907833273238, guid: d630d670ecc44f348bb5da645cf6e57a,
+        type: 2}
+      propertyPath: damage
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []

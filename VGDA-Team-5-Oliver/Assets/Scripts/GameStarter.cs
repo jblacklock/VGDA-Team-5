@@ -77,6 +77,13 @@ public class GameStarter : MonoBehaviour {
 
         yield return new WaitForSeconds(4);
 
-        SceneManager.LoadScene("WorldMap");
+        if (SceneManager.GetActiveScene().name == "Level_Final")
+        {
+            SceneManager.LoadScene(8);
+        } else
+        {
+            SceneManager.LoadScene("WorldMap");
+        }
+
     }
 }

@@ -15,7 +15,7 @@ public class PlayerSelector : MonoBehaviour {
 
     
 	void Start () {
-        selectable = true;
+        //selectable = true;
         movementCircle = GameObject.Find("MovementCircle");
         rotator = movementCircle.GetComponent<CircleRotator>(); 
         movementCircle.SetActive(false); 

@@ -13,7 +13,7 @@ public class Data {
     private Data()
     {
         usedPortals = new List<string>(); 
-        positionInWorldMap = new Vector3(0f, 0.5f, -3.8f);
+        positionInWorldMap = new Vector3(0f, 0f, 25f);
     }
     
     public static Data Instance()

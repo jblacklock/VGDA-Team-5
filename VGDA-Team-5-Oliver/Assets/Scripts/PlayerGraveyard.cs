@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerGraveyard : MonoBehaviour {
 
-    public Text gameOverText; 
+    public Text gameOverText;
+    public Animator blackFade; 
 
     private List<GameObject> deadPlayers;
     private PlayerSelector playerSelector;
@@ -56,6 +57,17 @@ public class PlayerGraveyard : MonoBehaviour {
     public IEnumerator GameOver()
     {
         gameOverText.enabled = true;
+
+        yield return new WaitForSeconds(4);
+
+        StartCoroutine("FadeOut");
+    }
+
+    public IEnumerator FadeOut()
+    {
+        GameObject.Find("BlackFade").GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+        blackFade.SetTrigger("FadeOut");
 
         yield return new WaitForSeconds(4);
 

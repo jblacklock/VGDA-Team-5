@@ -312,6 +312,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\AfterDialogueManager.cs" />
     <Compile Include="Assets\Scripts\BoatMovement.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />

@@ -6,17 +6,37 @@ using UnityEngine.SceneManagement;
 public class GameStarter : MonoBehaviour {
 
     public DialogueTrigger[] dialogues;
-    public DialogueTrigger[] afterDialogues; 
+    public DialogueTrigger[] afterDialogues;
+    public Animator blackFade;
 
     private int index;
-    private TurnManager turnManager; 
+    private TurnManager turnManager;
+    private PlayerSelector playerSelector; 
 
 	// Use this for initialization
 	void Start () {
+        GameObject manager = GameObject.Find("MovementManager");
+        playerSelector = manager.GetComponent<PlayerSelector>();
+        playerSelector.SetSelectable(false); 
+
         index = 0;
-        turnManager = GetComponentInParent<TurnManager>(); 
-        dialogues[index].TriggerDialogue(); 
+        turnManager = GetComponentInParent<TurnManager>();
+
+        StartCoroutine("FadeIn");
 	}
+
+    public IEnumerator FadeIn()
+    {
+        blackFade.SetTrigger("FadeIn");
+
+        yield return new WaitForSeconds(2);
+
+        GameObject.Find("BlackFade").GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+
+        yield return new WaitForSeconds(2); 
+
+        dialogues[index].TriggerDialogue();
+    }
 
     public void NextDialogue()
     {
@@ -44,8 +64,19 @@ public class GameStarter : MonoBehaviour {
             afterDialogues[index].TriggerAfterDialogue();
         }
         else
-        { 
-            SceneManager.LoadScene("WorldMap");
+        {
+            StartCoroutine("FadeOut"); 
         }
+    }
+
+    public IEnumerator FadeOut()
+    {
+        GameObject.Find("BlackFade").GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+        blackFade.SetTrigger("FadeOut");
+
+        yield return new WaitForSeconds(4);
+
+        SceneManager.LoadScene("WorldMap");
     }
 }

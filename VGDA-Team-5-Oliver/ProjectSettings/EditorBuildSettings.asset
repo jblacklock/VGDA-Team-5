@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: c18b25ca715a23440a0ee832717be308
   - enabled: 1
+    path: Assets/Scenes/TransitionScene.unity
+    guid: 1db3b1de5f66d994eb1e1424bc99062e
+  - enabled: 1
     path: Assets/Scenes/Level1_VikingVillage.unity
     guid: e313d4042702d894592e89daf020d0d5
   - enabled: 1
@@ -29,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_Final.unity
     guid: 1e85f472aee0bb64cbde9ad0c38c043c
+  - enabled: 1
+    path: Assets/Scenes/LastScene.unity
+    guid: 8d3522c8abb314c41aa409bee0f57941
   m_configObjects: {}

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelHandler : MonoBehaviour {
 
     public string sceneName;
+    public Animator blackFade;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,9 +14,20 @@ public class LevelHandler : MonoBehaviour {
         {
             Data.Instance().SetPositionInWorldMap(other.transform.position);
             Debug.Log(Data.Instance().GetPositionInWorldMap()); 
-            Data.Instance().SetLastPortal(gameObject); 
+            Data.Instance().SetLastPortal(gameObject);
 
-            SceneManager.LoadScene(sceneName); 
+            StartCoroutine("FadeOut");
         }
+    }
+
+    public IEnumerator FadeOut()
+    {
+        GameObject.Find("BlackFade").GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+
+        blackFade.SetTrigger("FadeOut");
+
+        yield return new WaitForSeconds(4);
+
+        SceneManager.LoadScene(sceneName);
     }
 }
